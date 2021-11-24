@@ -25,6 +25,6 @@ int main() {
     if (ast) {
          ast->print(std::cout);
     }
-
+    ast->free_();
     return 0;
 }
