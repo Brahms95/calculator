@@ -21,12 +21,13 @@ class ASTNode {
     ~ASTNode();
 
     std::string repr() const { return repr_; }
-
+    void push_vector(ASTNode* _delete){delete_.push_back(_delete);}
     void print(std::ostream &out) const;
+    void free_();
 
   private:
     void inner_print(std::ostream &out, size_t indent) const;
-
+    std::vector<ASTNode*> delete_;
     std::string repr_;
     ASTNode *lhs_;
     ASTNode *rhs_;

@@ -16,7 +16,7 @@ ASTNode::~ASTNode() {
     delete rhs_;
 }
 
-void ASTNode::print(std::ostream &out) const { inner_print(out, 0); delete lhs_; }
+void ASTNode::print(std::ostream &out) const { inner_print(out, 0);  }
 
 void ASTNode::inner_print(std::ostream &out, size_t indent) const {
     if (lhs_) {
@@ -32,4 +32,8 @@ void ASTNode::inner_print(std::ostream &out, size_t indent) const {
        
     }
   
+}
+void ASTNode::free_(){
+    for (auto i:delete_)
+        delete i;
 }

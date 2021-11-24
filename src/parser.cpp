@@ -18,12 +18,13 @@ ASTNode *Parser::expr() {
             case '+':
                 // Implement Add class and uncomment this line
                  root = new Add(root, term());
+                 root->push_vector(root);
 
                 break;
             case '-':
                 // Implement Sub class and uncomment this line
                 root = new Sub(root, term());
-              
+                root->push_vector(root);
                 break;
             default:
                 return root;
@@ -46,13 +47,13 @@ ASTNode *Parser::term() {
             switch (op.front()) {
             case '*':
                 // Implement Mul class and uncomment this line
-                 root = new Mul(root, prim());
-             
+                root = new Mul(root, prim());
+                root->push_vector(root);
                 break;
             case '/':
                 // Implement Div class and uncomment this line
                 root = new Div(root, prim());
-         
+                root->push_vector(root);
                 break;
             default:
                 return root;
@@ -72,11 +73,12 @@ ASTNode *Parser::prim() {
     switch (tok_) {
     case Token::Number:
         node = new Number(lexer_.get_number());
+        node->push_vector(node);
         break;
     case Token::Name:
         // Implement Variable class and uncomment this line
          node = new Variable(lexer_.get_name());
-       // return nullptr;
+         node->push_vector(node);
         break;
     default:
         break;
